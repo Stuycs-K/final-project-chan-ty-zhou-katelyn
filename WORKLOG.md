@@ -1,10 +1,10 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Ty Chan
 
-### date x
+### 05/22/24
 
-info
+Created skeleton code of classes, implemented a few main functions into billiardBall and started basic setup code
 
 ### date y
 
