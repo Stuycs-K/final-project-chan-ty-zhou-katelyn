@@ -4,14 +4,14 @@ public class billiardBall{
   boolean stripes;
   color c;
   
-  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos){
+  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos, float xVel, float yVel){
     mass = m;
     radius = r;
     stripes = stripe;
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(0, 0);
+    velocity = new PVector(xVel, yVel);
   }
   
   void move(){
@@ -36,5 +36,14 @@ public class billiardBall{
     force.mult(sq(cos(PVector.angleBetween(force, this.velocity))));
     other.applyForce(force);
     this.applyForce(PVector.mult(force, -1));
+  }
+  
+  void wallCollide(){
+    if(position.x >= 1175 || position.x <= 125){
+      velocity.x *= -1;
+    }
+    if(position.y >= 675 || position.y <= 125){
+      velocity.y *= -1;
+    }
   }
 }
