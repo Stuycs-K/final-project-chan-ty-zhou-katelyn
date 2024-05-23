@@ -7,4 +7,12 @@ public class cueStick{
     xPos = x;
     yPos = y;
   }
+  
+  void applyHit(billiardBall ball){
+    ball.applyForce(direction);
+  }
+  
+  void adjustPower(float power){
+    direction = direction.normalize().mult(power);
+  }
 }
