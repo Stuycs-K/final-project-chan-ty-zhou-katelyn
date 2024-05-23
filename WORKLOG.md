@@ -11,11 +11,11 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Katelyn Zhou
 
-### date x
+### 05/22/24
 
-info
+Created the pocket class and its constructor, and worked on several cueStick functions (applyHit, adjustPower)
 
 ### date y
 
