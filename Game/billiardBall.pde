@@ -29,4 +29,12 @@ public class billiardBall{
   void applyForce(PVector force){
     acceleration.sub(PVector.div(force, this.mass));
   }
+  
+  void ballCollide(billiardBall other){
+    PVector force = PVector.sub(other.position, this.position);
+    force.normalize();
+    force.mult(sq(cos(PVector.angleBetween(force, this.velocity))));
+    other.applyForce(force);
+    this.applyForce(PVector.mult(force, -1));
+  }
 }
