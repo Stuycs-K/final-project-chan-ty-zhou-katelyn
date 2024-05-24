@@ -1,7 +1,7 @@
 public class pocket{
-  double radius, xPos, yPos;
+  float radius, xPos, yPos;
   
-  public pocket(double r, double x, double y){
+  public pocket(float r, float x, float y){
     radius = r;
     xPos = x;
     yPos = y;
@@ -9,5 +9,11 @@ public class pocket{
   
   boolean detectGoal(double x, double y){
     return false;
+  }
+  
+  void display(){
+    noStroke();
+    fill(0);
+    circle(xPos, yPos, radius * 2);
   }
 }
