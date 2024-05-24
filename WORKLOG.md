@@ -6,9 +6,9 @@
 
 Created skeleton code of classes, implemented a few main functions into billiardBall and started basic setup code
 
-### date y
+### 05/23/24
 
-info
+Made changes to the cueStick class, tried to test how it displayed and also changed board visual
 
 
 ## Katelyn Zhou
