@@ -1,4 +1,5 @@
 ArrayList<billiardBall> ballList;
+ArrayList<pocket> pocketList;
 cueStick stick;
 static int backColor = 255;
 
@@ -7,7 +8,7 @@ void setup(){
   size(1300, 800);
   stick = new cueStick(0, 0);
   ballList = new ArrayList<billiardBall>();
-
+  pocketList = new ArrayList<pocket>();
   ballList.add(new billiardBall(15, 25, 255, 250, 400)); //cueBall
   ballList.add(new billiardBall(15, 25, true, #FFFF00, 800, 400)); //row1 ;; yellow striped
   ballList.add(new billiardBall(15, 25, true, #FFA500, 830, 420)); //row2 ;; orange striped
@@ -24,6 +25,13 @@ void setup(){
   ballList.add(new billiardBall(15, 25, true, #460000, 920, 440)); //dark red striped
   ballList.add(new billiardBall(15, 25, true, #800080, 920, 480)); //purple striped
   ballList.add(new billiardBall(15, 25, 0, 860, 400)); //8ball
+  
+  pocketList.add(new pocket(20, 125, 125));
+  pocketList.add(new pocket(20, 650, 125));
+  pocketList.add(new pocket(20, 1175, 125));
+  pocketList.add(new pocket(20, 125, 675));
+  pocketList.add(new pocket(20, 650, 675));
+  pocketList.add(new pocket(20, 1175, 675));
 }
 
 void draw(){
@@ -35,5 +43,8 @@ void draw(){
     ball.display();
     ball.wallCollide();
     
+  }
+  for(pocket pocket : pocketList){
+    pocket.display();
   }
 }
