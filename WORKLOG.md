@@ -17,6 +17,6 @@ info
 
 Created the pocket class and its constructor, and worked on several cueStick functions (applyHit, adjustPower)
 
-### date y
+### 05/23/24
 
-info
+Created board; set up the balls (specific starting positions, colors, stripes, etc.) and pockets
