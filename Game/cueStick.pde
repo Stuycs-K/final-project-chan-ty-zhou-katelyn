@@ -4,6 +4,7 @@ public class cueStick{
 
   public cueStick(float x, float y){
     direction = new PVector(0, 0);
+    direction.mult(50);
     xPos = x;
     yPos = y;
   }
@@ -17,7 +18,7 @@ public class cueStick{
   }
 
   void changeDir(float x, float y){
-    direction = PVector.mult(new PVector(x - mouseX, y - mouseY), direction.mag());
+    
   }
 
   void changePos(float x, float y){
@@ -26,7 +27,9 @@ public class cueStick{
   }
 
   void display(){
-    strokeWeight(16);
+    strokeWeight(20);
+    stroke(0);
     line(xPos, yPos, xPos - direction.x, yPos - direction.y);
+    strokeWeight(5);
   }
 }
