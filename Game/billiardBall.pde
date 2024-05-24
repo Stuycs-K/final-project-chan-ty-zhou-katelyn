@@ -20,10 +20,11 @@ public class billiardBall{
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(0, 0);
+    velocity = new PVector(20, 0.25);
   }
   
   void move(){
+    velocity.add(velocity.x / -150, velocity.y / -150);
     velocity.add(acceleration);
     position.add(velocity);
     acceleration = new PVector(0, 0);
@@ -36,22 +37,22 @@ public class billiardBall{
   }
   
   void applyForce(PVector force){
-    acceleration.sub(PVector.div(force, this.mass));
+    acceleration.add(PVector.div(force, this.mass));
   }
   
   void ballCollide(billiardBall other){
     PVector force = PVector.sub(other.position, this.position);
     force.normalize();
-    force.mult(sq(cos(PVector.angleBetween(force, this.velocity))));
+    force.mult(velocity.mag() * 10 * sq(cos(PVector.angleBetween(force, this.velocity))));
     other.applyForce(force);
     this.applyForce(PVector.mult(force, -1));
   }
   
   void wallCollide(){
-    if(position.x >= 1175 || position.x <= 125){
+    if(position.x >= 1135 || position.x <= 165){
       velocity.x *= -1;
     }
-    if(position.y >= 675 || position.y <= 125){
+    if(position.y >= 635 || position.y <= 165){
       velocity.y *= -1;
     }
   }
