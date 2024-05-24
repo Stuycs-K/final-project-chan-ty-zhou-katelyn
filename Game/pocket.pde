@@ -7,7 +7,10 @@ public class pocket{
     yPos = y;
   }
   
-  boolean detectGoal(double x, double y){
+  boolean detectGoal(float x, float y){
+    if(abs(xPos-x) <= radius && abs(yPos-y) <= radius){
+    return true;
+  }
     return false;
   }
   

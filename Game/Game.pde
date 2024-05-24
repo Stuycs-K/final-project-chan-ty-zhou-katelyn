@@ -54,6 +54,14 @@ void draw(){
     }
 
   }
+  for(int i = 0; i < ballList.size(); i++){
+    for(pocket pocket : pocketList){
+      if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
+        ballList.remove(i);
+        i--;
+      }
+    }
+  }
   //stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
   //stick.display();
 }
