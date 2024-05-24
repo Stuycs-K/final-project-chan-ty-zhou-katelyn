@@ -4,14 +4,23 @@ public class billiardBall{
   boolean stripes;
   color c;
   
-  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos, float xVel, float yVel){
+  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos){
     mass = m;
     radius = r;
     stripes = stripe;
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(xVel, yVel);
+    velocity = new PVector(0, 0);
+  }
+  
+    public billiardBall(float r, float m, color Color, float xPos, float yPos){
+    mass = m;
+    radius = r;
+    c = Color;
+    position = new PVector(xPos, yPos);
+    acceleration = new PVector(0, 0);
+    velocity = new PVector(0, 0);
   }
   
   void move(){
