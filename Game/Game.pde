@@ -24,7 +24,7 @@ void setup(){
   ballList.add(new billiardBall(15, 25, false, #00FF00, 920, 400)); //green solid
   ballList.add(new billiardBall(15, 25, true, #460000, 920, 440)); //dark red striped
   ballList.add(new billiardBall(15, 25, true, #800080, 920, 480)); //purple striped
-  ballList.add(new billiardBall(15, 25, 0, 860, 400)); //8ball
+  ballList.add(new billiardBall(15, 25, true, color(0), 860, 400)); //8ball
   
   pocketList.add(new pocket(20, 125, 125));
   pocketList.add(new pocket(20, 650, 125));
@@ -37,9 +37,11 @@ void setup(){
 void draw(){
   background(backColor);
   fill(#964B00);
+  strokeWeight(3);
   rect(100, 100, 1100, 600);
   fill(0, 255, 0);
   rect(150, 150, 1000, 500);
+  strokeWeight(0);
   for(pocket pocket : pocketList){
     pocket.display();
   }
@@ -47,10 +49,15 @@ void draw(){
     ball.move();
     ball.display();
     ball.wallCollide();
+    for(billiardBall other : ballList){
+      if(ball != other && dist(ball.position.x, ball.position.y, other.position.x, other.position.y) < 30){
+        ball.ballCollide(other);
+      }
+    }
 
   }
-  stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
-  stick.display();
+  //stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
+  //stick.display();
 }
 
 void mouseClicked(){
