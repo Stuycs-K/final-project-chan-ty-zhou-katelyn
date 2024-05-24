@@ -6,7 +6,7 @@ void setup(){
   size(1300, 800);
   stick = new cueStick(0, 0);
   ballList = new ArrayList<billiardBall>();
-  ballList.add(new billiardBall(15, 25, true, 0, 250, 400)); //cueBall
+  ballList.add(new billiardBall(15, 25, 255, 250, 400)); //cueBall
   ballList.add(new billiardBall(15, 25, true, 0, 800, 400)); //row1
   ballList.add(new billiardBall(15, 25, true, 0, 830, 420)); //row2
   ballList.add(new billiardBall(15, 25, true, 0, 830, 380)); 
@@ -21,7 +21,7 @@ void setup(){
   ballList.add(new billiardBall(15, 25, true, 0, 920, 400));
   ballList.add(new billiardBall(15, 25, true, 0, 920, 440));
   ballList.add(new billiardBall(15, 25, true, 0, 920, 480));
-  ballList.add(new billiardBall(15, 25, true, 0, 860, 400)); //8ball
+  ballList.add(new billiardBall(15, 25, 0, 860, 400)); //8ball
 }
 
 void draw(){

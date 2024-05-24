@@ -14,6 +14,15 @@ public class billiardBall{
     velocity = new PVector(0, 0);
   }
   
+    public billiardBall(float r, float m, color Color, float xPos, float yPos){
+    mass = m;
+    radius = r;
+    c = Color;
+    position = new PVector(xPos, yPos);
+    acceleration = new PVector(0, 0);
+    velocity = new PVector(0, 0);
+  }
+  
   void move(){
     velocity.add(acceleration);
     position.add(velocity);
