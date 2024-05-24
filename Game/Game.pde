@@ -26,19 +26,19 @@ void setup(){
   ballList.add(new billiardBall(15, 25, true, #800080, 920, 480)); //purple striped
   ballList.add(new billiardBall(15, 25, 0, 860, 400)); //8ball
   
-  pocketList.add(new pocket(20, 125, 125));
-  pocketList.add(new pocket(20, 650, 125));
-  pocketList.add(new pocket(20, 1175, 125));
-  pocketList.add(new pocket(20, 125, 675));
-  pocketList.add(new pocket(20, 650, 675));
-  pocketList.add(new pocket(20, 1175, 675));
+  pocketList.add(new pocket(20, 135, 135));
+  pocketList.add(new pocket(20, 650, 130));
+  pocketList.add(new pocket(20, 1165, 135));
+  pocketList.add(new pocket(20, 135, 665));
+  pocketList.add(new pocket(20, 650, 670));
+  pocketList.add(new pocket(20, 1165, 665));
 }
 
 void draw(){
   background(backColor);
-  fill(#964B00);
+  fill(#691d10);
   rect(100, 100, 1100, 600);
-  fill(0, 255, 0);
+  fill(#0a7f71);
   rect(150, 150, 1000, 500);
   for(pocket pocket : pocketList){
     pocket.display();
