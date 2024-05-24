@@ -36,15 +36,23 @@ void setup(){
 
 void draw(){
   background(backColor);
-  fill(190);
+  fill(#964B00);
   rect(100, 100, 1100, 600);
+  fill(0, 255, 0);
+  rect(150, 150, 1000, 500);
+  for(pocket pocket : pocketList){
+    pocket.display();
+  }
   for(billiardBall ball : ballList){
     ball.move();
     ball.display();
     ball.wallCollide();
-    
+
   }
-  for(pocket pocket : pocketList){
-    pocket.display();
-  }
+  stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
+  stick.display();
+}
+
+void mouseClicked(){
+ // stick.changeDir();
 }
