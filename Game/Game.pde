@@ -40,6 +40,9 @@ void draw(){
   rect(100, 100, 1100, 600);
   fill(#0a7f71);
   rect(150, 150, 1000, 500);
+  fill(0);
+  rect(35, 150, 45, 500);
+  rect(525, 725, 260, 59);
   for(pocket pocket : pocketList){
     pocket.display();
   }
@@ -67,5 +70,11 @@ void draw(){
 }
 
 void mouseClicked(){
- // stick.changeDir();
+ if(mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
+   stick.applyHit(ballList.get(0));
+ } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
+   stick.adjustPower((mouseY-150)/5);
+ } else{
+   stick.changeDir(mouseX,mouseY);
+ }
 }
