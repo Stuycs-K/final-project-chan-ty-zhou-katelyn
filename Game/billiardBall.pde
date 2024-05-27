@@ -37,6 +37,10 @@ public class billiardBall{
     noStroke();
     fill(c);
     circle(this.position.x, this.position.y, radius * 2);
+    if(stripes){
+      fill(255);
+      rect(this.position.x - radius + 1, this.position.y - 3.5, radius * 2 -1, 7);
+    }
   }
   
   void applyForce(PVector force){
