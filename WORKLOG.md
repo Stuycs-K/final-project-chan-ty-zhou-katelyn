@@ -14,6 +14,9 @@ Made changes to the cueStick class, tried to test how it displayed and also chan
 
 Fixed ballCollide physics to make it work and also tested different velocities
 
+### 05/26/24
+
+Fixed bug with wall collisions and added randomness to ball collisions
 
 ## Katelyn Zhou
 
@@ -28,3 +31,7 @@ Created board; set up the balls (specific starting positions, colors, stripes, e
 ### 05/24/24
 
 Updated the board setup (all 16 balls) and colors and also added basic ball to pocket detection
+
+### 05/26/24
+
+Created buttons for adjusting power and shooting and wrote mousePressed and added stripes to some balls
