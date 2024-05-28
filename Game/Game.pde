@@ -13,7 +13,7 @@ void setup(){
   ballList = new ArrayList<billiardBall>();
   pocketList = new ArrayList<pocket>();
   ballList.add(new billiardBall(15, 25, 255, 250, 400)); //cueBall
-  ballList.add(new billiardBall(15, 25, true, color(0), 860, 400)); //8ball
+  ballList.add(new billiardBall(15, 25, color(0), 860, 400)); //8ball
   ballList.add(new billiardBall(15, 25, true, #FFFF00, 800, 400)); //row1 ;; yellow striped
   ballList.add(new billiardBall(15, 25, true, #FFA500, 830, 420)); //row2 ;; orange striped
   ballList.add(new billiardBall(15, 25, false, #FFA500, 830, 380)); //orange solid
@@ -77,8 +77,8 @@ void draw(){
       }
     }
   }
-  //stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
-  //stick.display();
+  stick.changePos(ballList.get(0).position.x, ballList.get(0).position.y);
+  stick.display();
 }
 
 void mouseClicked(){
@@ -87,7 +87,7 @@ void mouseClicked(){
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
    stick.adjustPower((mouseY-150)/5);
  } else{
-   //stick.changeDir(ballList.get(0).position);
+   stick.changeDir(ballList.get(0).position);
  }
 }
 

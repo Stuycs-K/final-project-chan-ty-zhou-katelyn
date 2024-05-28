@@ -20,7 +20,7 @@ public class billiardBall{
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(15, 0);
+    velocity = new PVector(0, 0);
   }
   
   void move(){

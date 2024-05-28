@@ -15,7 +15,7 @@ public class cueStick{
   }
 
   void adjustPower(float power){
-    direction = direction.normalize().mult(power);
+    direction = direction.normalize().mult(power * 5);
   }
 
   void changeDir(PVector cuePos){
