@@ -1,7 +1,10 @@
 ArrayList<billiardBall> ballList;
 ArrayList<pocket> pocketList;
 cueStick stick;
-static int backColor = 255;
+static int backColor = 155;
+static int countStripe = 0;
+static int countSolid = 0;
+private boolean teamActive;
 
 void setup(){
   background(#0AB086); //832222 brown
@@ -10,6 +13,7 @@ void setup(){
   ballList = new ArrayList<billiardBall>();
   pocketList = new ArrayList<pocket>();
   ballList.add(new billiardBall(15, 25, 255, 250, 400)); //cueBall
+  ballList.add(new billiardBall(15, 25, true, color(0), 860, 400)); //8ball
   ballList.add(new billiardBall(15, 25, true, #FFFF00, 800, 400)); //row1 ;; yellow striped
   ballList.add(new billiardBall(15, 25, true, #FFA500, 830, 420)); //row2 ;; orange striped
   ballList.add(new billiardBall(15, 25, false, #FFA500, 830, 380)); //orange solid
@@ -24,7 +28,6 @@ void setup(){
   ballList.add(new billiardBall(15, 25, false, #00FF00, 920, 400)); //green solid
   ballList.add(new billiardBall(15, 25, true, #460000, 920, 440)); //dark red striped
   ballList.add(new billiardBall(15, 25, true, #800080, 920, 480)); //purple striped
-  ballList.add(new billiardBall(15, 25, true, color(0), 860, 400)); //8ball
   
   pocketList.add(new pocket(20, 135, 135));
   pocketList.add(new pocket(20, 650, 130));
@@ -35,12 +38,21 @@ void setup(){
 }
 
 void draw(){
+  countStripe = 0;
+  countSolid = 0;
+  for(int i = 2; i < ballList.size(); i++){
+    if(ballList.get(i).stripes){
+      countStripe++;
+    } else if(!ballList.get(i).stripes){
+      countSolid++;
+    }
+  }
   background(backColor);
   fill(#691d10);
   rect(100, 100, 1100, 600);
   fill(#0a7f71);
   rect(150, 150, 1000, 500);
-  fill(0);
+  fill(#86d3f2);
   rect(35, 150, 45, 500);
   rect(525, 725, 260, 59);
   for(pocket pocket : pocketList){
@@ -75,6 +87,11 @@ void mouseClicked(){
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
    stick.adjustPower((mouseY-150)/5);
  } else{
-   stick.changeDir(mouseX,mouseY);
+   //stick.changeDir(ballList.get(0).position);
  }
+}
+
+boolean turn(){
+  if(teamActive){}
+  return true;
 }
