@@ -1,9 +1,10 @@
 public class cueStick{
   PVector direction;
+  PVector cueForce;
   float xPos, yPos;
 
   public cueStick(float x, float y){
-    direction = new PVector(0, 0);
+    direction = new PVector(1, 0);
     direction.mult(50);
     xPos = x;
     yPos = y;
@@ -17,8 +18,10 @@ public class cueStick{
     direction = direction.normalize().mult(power);
   }
 
-  void changeDir(float x, float y){
-    
+  void changeDir(PVector cuePos){
+    PVector mouse = new PVector(mouseX, mouseY);
+    PVector tempVec = PVector.sub(cuePos, mouse);
+    direction = tempVec.normalize().mult(direction.mag());
   }
 
   void changePos(float x, float y){
