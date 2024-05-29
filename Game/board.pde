@@ -32,8 +32,8 @@ public class board{
   void display(){
     strokeWeight(5);
     stroke(0);
-    fill(#691d10);
-    rect(100, 100, 1100, 600);
+    fill(#6c3026);
+    rect(110, 110, 1080, 580);
     fill(#0a7f71);
     rect(150, 150, 1000, 500);
     rect(35, 150, 45, 500);
