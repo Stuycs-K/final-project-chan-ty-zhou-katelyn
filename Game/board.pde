@@ -21,12 +21,12 @@ public class board{
     ballList.add(new billiardBall(15, 25, false, #00FF00, 920, 400)); //green solid
     ballList.add(new billiardBall(15, 25, true, #460000, 920, 440)); //dark red striped
     ballList.add(new billiardBall(15, 25, true, #800080, 920, 480)); //purple striped
-    pocketList.add(new pocket(20, 135, 135));
-    pocketList.add(new pocket(20, 650, 130));
-    pocketList.add(new pocket(20, 1165, 135));
-    pocketList.add(new pocket(20, 135, 665));
-    pocketList.add(new pocket(20, 650, 670));
-    pocketList.add(new pocket(20, 1165, 665));
+    pocketList.add(new pocket(25, 150, 145));
+    pocketList.add(new pocket(25, 650, 140));
+    pocketList.add(new pocket(25, 1145, 145));
+    pocketList.add(new pocket(25, 150, 655));
+    pocketList.add(new pocket(25, 650, 660));
+    pocketList.add(new pocket(25, 1145, 655));
   }
 
   void display(){
