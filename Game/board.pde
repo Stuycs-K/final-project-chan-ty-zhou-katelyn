@@ -63,5 +63,13 @@ public class board{
         }
       }
     }
+    for(pocket pocket : pocketList){
+      for(int i = 2; i < ballList.size(); i++){
+        if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
+          ballList.remove(i);
+          i--;
+        }
+    }
+    }
   }
 }
