@@ -18,6 +18,10 @@ Fixed ballCollide physics to make it work and also tested different velocities
 
 Fixed bug with wall collisions and added randomness to ball collisions
 
+### 05/28/24
+
+Organized new board class and implemented check for if any balls are moving
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -35,3 +39,7 @@ Updated the board setup (all 16 balls) and colors and also added basic ball to p
 ### 05/26/24
 
 Created buttons for adjusting power and shooting and wrote mousePressed and added stripes to some balls
+
+### 05/28/24
+
+Updated display of board/power and worked on detecting goal, attempted to start implementing turns
