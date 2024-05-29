@@ -30,8 +30,9 @@ public class cueStick{
   }
 
   void display(){
+    fill(#c98165);
     strokeWeight(20);
-    stroke(0);
+    stroke(#a86b53);
     line(xPos, yPos, xPos - direction.x, yPos - direction.y);
     strokeWeight(5);
   }
