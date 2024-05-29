@@ -36,10 +36,20 @@ public class board{
     rect(100, 100, 1100, 600);
     fill(#0a7f71);
     rect(150, 150, 1000, 500);
-    fill(#86d3f2);
     rect(35, 150, 45, 500);
+    strokeWeight(0);
+    fill(#00FF00); //gween
+    rect(35, 150, 45, 169);
+    fill(#FFFF00); //yewwow
+    rect(35, 319, 45, 169);
+    fill(#FF0000); //wed
+    rect(35, 488, 45, 165);
     rect(525, 725, 260, 59);
     strokeWeight(0);
+    fill(0);
+    textSize(25);
+    text("low", 40, 140);
+    text("high", 35, 675);
     for(pocket pocket : pocketList){
       pocket.display();
     }
