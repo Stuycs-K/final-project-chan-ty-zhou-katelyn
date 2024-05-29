@@ -30,6 +30,8 @@ public class board{
   }
 
   void display(){
+    strokeWeight(5);
+    stroke(0);
     fill(#691d10);
     rect(100, 100, 1100, 600);
     fill(#0a7f71);
@@ -37,6 +39,7 @@ public class board{
     fill(#86d3f2);
     rect(35, 150, 45, 500);
     rect(525, 725, 260, 59);
+    strokeWeight(0);
     for(pocket pocket : pocketList){
       pocket.display();
     }
