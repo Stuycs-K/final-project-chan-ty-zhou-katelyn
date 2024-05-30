@@ -22,6 +22,10 @@ Fixed bug with wall collisions and added randomness to ball collisions
 
 Organized new board class and implemented check for if any balls are moving
 
+### 05/29/24
+
+Started creating board borders and slightly changed border collision parameter
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -43,3 +47,7 @@ Created buttons for adjusting power and shooting and wrote mousePressed and adde
 ### 05/28/24
 
 Updated display of board/power and worked on detecting goal, attempted to start implementing turns
+
+### 05/29/24
+
+Finished borders, changed some display, fixed collision so it accounts for new borders
