@@ -38,7 +38,9 @@ public class board{
     fill(#0a7f71);
     strokeWeight(0);
     rect(150, 150, 1000, 500);
+    strokeWeight(2);
     rect(35, 150, 45, 500);
+    fill(255);
     rect(525, 725, 260, 59);
     strokeWeight(0);
     fill(#00FF00);
@@ -47,10 +49,11 @@ public class board{
     rect(35, 319, 45, 169);
     fill(#FF0000);
     rect(35, 488, 45, 165);
-    fill(0);
     textSize(25);
+    fill(0);
     text("low", 40, 140);
     text("high", 35, 675);
+    text("shoot!", 620, 765);
     fill(#076156);
     quad(180, 150, 625, 150, 615, 160, 190, 160);
     quad(180, 650, 625, 650, 615, 640, 190, 640);
@@ -58,7 +61,6 @@ public class board{
     quad(675, 650, 1120, 650, 1110, 640, 685, 640);
     quad(150, 175, 150, 625, 160, 615, 160, 185);
     quad(1150, 175, 1150, 625, 1140, 615, 1140, 185);
-    text("shoot!", 620, 765);
     for(pocket pocket : pocketList){
       pocket.display();
     }
