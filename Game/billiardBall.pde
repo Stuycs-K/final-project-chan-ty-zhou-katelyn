@@ -60,19 +60,19 @@ public class billiardBall{
   }
   
   void wallCollide(){
-    if(position.x >= 1132){
+    if(position.x >= 1122 && (position.y >= 185 && position.y <= 615)){
       position.x -= 3;
       velocity.x *= -1;
     }
-    else if(position.x <= 168){
+    else if(position.x <= 178 && (position.y >= 185 && position.y <= 615)){
       position.x += 3;
       velocity.x *= -1;
     }
-    if(position.y >= 632){
+    if(position.y >= 622 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110))){
       position.y -= 3;
       velocity.y *= -1;
     }
-    else if(position.y <= 168){
+    else if(position.y <= 178 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110))){
       position.y += 3;
       velocity.y *= -1;
     }
