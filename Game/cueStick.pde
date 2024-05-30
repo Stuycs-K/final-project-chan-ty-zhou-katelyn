@@ -34,6 +34,8 @@ public class cueStick{
     strokeWeight(20);
     stroke(#a86b53);
     line(xPos, yPos, xPos - direction.x, yPos - direction.y);
-    strokeWeight(5);
+    strokeWeight(2);
+    stroke(255);
+    line(xPos, yPos, xPos + direction.x * 4, yPos + direction.y * 4);
   }
 }
