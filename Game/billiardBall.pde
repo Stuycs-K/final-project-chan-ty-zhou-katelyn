@@ -34,13 +34,16 @@ public class billiardBall{
   }
   
   void display(){
-    noStroke();
+    stroke(0);
+    strokeWeight(1);
     fill(c);
     circle(this.position.x, this.position.y, radius * 2);
     if(stripes){
+      noStroke();
       fill(255);
       rect(this.position.x - radius + 1, this.position.y - 3.5, radius * 2 -1, 7);
     }
+    noStroke();
   }
   
   void applyForce(PVector force){
