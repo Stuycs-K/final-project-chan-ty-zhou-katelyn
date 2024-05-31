@@ -26,6 +26,10 @@ Organized new board class and implemented check for if any balls are moving
 
 Started creating board borders and slightly changed border collision parameter
 
+### 05/30/24
+
+improved cueStick visuals and magnitude and added directional line
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -51,3 +55,7 @@ Updated display of board/power and worked on detecting goal, attempted to start 
 ### 05/29/24
 
 Finished borders, changed some display, fixed collision so it accounts for new borders
+
+### 05/30/24
+
+Fixed some broken visuals and completed readme
