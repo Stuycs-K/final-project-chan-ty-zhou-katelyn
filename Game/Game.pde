@@ -1,7 +1,6 @@
 board boardOne;
 cueStick stick;
 private boolean teamActive;
-private boolean movement;
 
 void setup(){
   background(155); //832222 brown
@@ -14,13 +13,13 @@ void draw(){
   background(155);
   boardOne.display();
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
-  if(!moving()){
+  if(!boardOne.moving()){
     stick.display();
   }
 }
 
 void mouseClicked(){
- if(!moving() && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
+ if(!boardOne.moving() && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
    stick.applyHit(boardOne.ballList.get(0));
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
    stick.adjustPower((mouseY-150)/5);
@@ -32,14 +31,4 @@ void mouseClicked(){
 boolean turn(){
   if(teamActive){}
   return true;
-}
-
-boolean moving(){
-  movement = false;
-  for(billiardBall ball : boardOne.ballList){
-    if(ball.velocity.mag() != 0){
-      movement = true;
-    }
-  }
-  return movement;
 }

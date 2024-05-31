@@ -3,11 +3,14 @@ public class board{
   ArrayList<pocket> pocketList;
   int countStripe = 0;
   int countSolid = 0;
+  boolean whiteIn = false;
+  boolean movement;
   
   public board(){
     ballList = new ArrayList<billiardBall>();
     pocketList = new ArrayList<pocket>();
-    ballList.add(new billiardBall(18, 25, 255, 250, 400)); //cueBall
+    billiardBall cueBall = new billiardBall(18, 25, 255, 250, 400);
+    ballList.add(cueBall); //cueBall
     ballList.add(new billiardBall(18, 25, color(0), 860, 400)); //8ball
     ballList.add(new billiardBall(18, 25, true, #FFFF00, 800, 400)); //row1 ;; yellow striped
     ballList.add(new billiardBall(18, 25, true, #FFA500, 830, 420)); //row2 ;; orange striped
@@ -31,6 +34,16 @@ public class board{
     pocketList.add(new pocket(25, 650, 660));
     pocketList.add(new pocket(25, 1145, 655));
   }
+  
+  boolean moving(){
+  movement = false;
+  for(billiardBall ball : boardOne.ballList){
+    if(ball.velocity.mag() != 0){
+      movement = true;
+    }
+  }
+  return movement;
+}
 
   void display(){
     strokeWeight(5);
@@ -66,17 +79,27 @@ public class board{
     for(pocket pocket : pocketList){
       pocket.display();
     }
-    for(billiardBall ball : ballList){
-      ball.move();
-      ball.display();
-      ball.wallCollide();
+    for(int i = 0; i < ballList.size(); i++){
+      ballList.get(i).move();
+      if(!(i==0 && whiteIn)){
+        ballList.get(i).display();
+      }
+      if(whiteIn && !moving()){
+        ballList.get(0).position.x=mouseX;
+        ballList.get(0).position.y=mouseY;
+        ballList.get(0).display();
+      }
+      ballList.get(i).wallCollide();
       for(billiardBall other : ballList){
-        if(ball != other && dist(ball.position.x, ball.position.y, other.position.x, other.position.y) < 36){
-          ball.ballCollide(other);
+        if(ballList.get(i) != other && dist(ballList.get(i).position.x, ballList.get(i).position.y, other.position.x, other.position.y) < 36){
+          ballList.get(i).ballCollide(other);
         }
       }
     }
     for(pocket pocket : pocketList){
+      if(pocket.detectGoal(ballList.get(0).position.x,ballList.get(0).position.y)){
+        whiteIn = true;
+      }
       for(int i = 2; i < ballList.size(); i++){
         if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
           ballList.remove(i);
