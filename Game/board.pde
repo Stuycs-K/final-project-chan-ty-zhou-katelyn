@@ -99,6 +99,8 @@ public class board{
     for(pocket pocket : pocketList){
       if(pocket.detectGoal(ballList.get(0).position.x,ballList.get(0).position.y)){
         whiteIn = true;
+        ballList.get(0).velocity.x = 0;
+        ballList.get(0).velocity.y = 0;
       }
       for(int i = 2; i < ballList.size(); i++){
         if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
