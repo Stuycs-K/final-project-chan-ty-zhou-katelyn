@@ -1,6 +1,8 @@
 public class board{
   ArrayList<billiardBall> ballList;
   ArrayList<pocket> pocketList;
+  int countStripe = 0;
+  int countSolid = 0;
   
   public board(){
     ballList = new ArrayList<billiardBall>();

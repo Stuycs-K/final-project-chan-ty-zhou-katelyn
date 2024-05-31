@@ -1,6 +1,5 @@
 public class cueStick{
   PVector direction;
-  PVector cueForce;
   float xPos, yPos;
 
   public cueStick(float x, float y){

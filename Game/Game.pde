@@ -1,22 +1,17 @@
-ArrayList<billiardBall> ballList;
-ArrayList<pocket> pocketList;
 board boardOne;
 cueStick stick;
-static int backColor = 155;
-static int countStripe = 0;
-static int countSolid = 0;
 private boolean teamActive;
 private boolean movement;
 
 void setup(){
-  background(backColor); //832222 brown
+  background(155); //832222 brown
   size(1300, 800);
   stick = new cueStick(0, 0);
   boardOne = new board();
 }
 
 void draw(){
-  background(backColor);
+  background(155);
   boardOne.display();
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
   if(!moving()){
