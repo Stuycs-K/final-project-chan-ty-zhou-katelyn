@@ -13,18 +13,21 @@ void draw(){
   background(155);
   boardOne.display();
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
-  if(!boardOne.moving()){
+  if(!boardOne.moving() && !boardOne.whiteIn){
     stick.display();
   }
 }
 
 void mouseClicked(){
- if(!boardOne.moving() && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
+ if(!boardOne.moving() && !boardOne.whiteIn && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
    stick.applyHit(boardOne.ballList.get(0));
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
    stick.adjustPower((mouseY-150)/5);
- } else{
+ } else if(!boardOne.whiteIn){
    stick.changeDir(boardOne.ballList.get(0).position);
+ }else if(boardOne.whiteIn && mouseX > 178 && mouseX < 1122 && mouseY > 178 && mouseY < 1092){
+   boardOne.whiteIn = false;
+   
  }
 }
 
