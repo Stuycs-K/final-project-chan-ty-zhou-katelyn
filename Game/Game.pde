@@ -23,22 +23,34 @@ void draw(){
   if(boardOne.moving()){
     countdown++;
   }
-  if(!boardOne.moving() && countdown > 0){
+  if(!boardOne.moving() && countdown > 0){ //this is only called AFTER a move is made
     countdown = 0;
     turn++;
-    if(choiceTeam[0] == null && teamActive){
-      choiceTeam[0] = "stripes";
-      choiceTeam[1] = "solids";
-    }else if(choiceTeam[0] == null){
-      choiceTeam[0] = "solids";
-      choiceTeam[1] = "stripes";
+    if(choiceTeam[0] == null){
+      if((teamActive && boardOne.stripeScore()) || (!teamActive && boardOne.solidScore())){
+        choiceTeam[0] = "stripes";
+        choiceTeam[1] = "solids";
+      }else if((teamActive && boardOne.solidScore()) || (!teamActive && boardOne.stripeScore())){
+        choiceTeam[0] = "solids";
+        choiceTeam[1] = "stripes";
+      }
+      }
+      if(teamActive){
+        teamActive = false;
+        if((boardOne.stripeScore() && choiceTeam[0].equals("stripes")) || (boardOne.solidScore() && choiceTeam[0].equals("solids"))){
+          teamActive = true;
+        }
+      }else{
+        teamActive = true;
+        if((boardOne.stripeScore() && choiceTeam[1].equals("stripes")) || (boardOne.solidScore() && choiceTeam[1].equals("solids"))){
+          teamActive = false;
+        }
+      }
+      
+      boardOne.tempSolid = 0;
+      boardOne.tempStripe = 0;
     }
-    if(!boardOne.moving() && !boardOne.stripeScore() && teamActive){
-    teamActive = false;
-  }else if(!boardOne.moving() && !boardOne.solidScore() && !teamActive){
-    teamActive = true;
-  }
-  }
+  
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
   if(!boardOne.moving() && !boardOne.whiteIn){
     stick.display();
