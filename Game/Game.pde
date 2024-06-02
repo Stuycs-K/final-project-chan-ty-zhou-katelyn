@@ -27,12 +27,17 @@ void draw(){
     countdown = 0;
     turn++;
     if(choiceTeam[0] == null && teamActive){
-      choiceTeam[0] = "stripe";
-      choiceTeam[1] = "solid";
+      choiceTeam[0] = "stripes";
+      choiceTeam[1] = "solids";
     }else if(choiceTeam[0] == null){
-      choiceTeam[0] = "solid";
-      choiceTeam[1] = "stripe";
+      choiceTeam[0] = "solids";
+      choiceTeam[1] = "stripes";
     }
+    if(!boardOne.moving() && !boardOne.stripeScore() && teamActive){
+    teamActive = false;
+  }else if(!boardOne.moving() && !boardOne.solidScore() && !teamActive){
+    teamActive = true;
+  }
   }
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
   if(!boardOne.moving() && !boardOne.whiteIn){
