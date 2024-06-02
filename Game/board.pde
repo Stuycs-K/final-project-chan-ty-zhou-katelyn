@@ -131,20 +131,16 @@ public class board{
   boolean stripeScore(){
     if(!moving()){
       if(tempStripe > 0){     
-        tempStripe =0;
         return true;
       }
-      tempStripe =0;
     }
     return false;
   }
   boolean solidScore(){
     if(!moving()){
       if(tempSolid > 0){     
-        tempSolid = 0;
         return true;
       }
-      tempSolid =0;
     }
     return false;
   }
