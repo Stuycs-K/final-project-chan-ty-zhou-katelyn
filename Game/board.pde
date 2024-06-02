@@ -124,6 +124,8 @@ public class board{
         }
     }
     }
+    text("temp stripes " + tempStripe, 620, 30);
+    text("temp solids " + tempSolid, 620, 40);
   }
   
   boolean stripeScore(){
