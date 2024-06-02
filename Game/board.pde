@@ -1,14 +1,22 @@
 public class board{
   ArrayList<billiardBall> ballList;
   ArrayList<pocket> pocketList;
-  int countStripe = 0;
-  int countSolid = 0;
   boolean whiteIn = false;
   boolean movement;
+  int stripe;
+  int solid;
+  int tempStripe;
+  int tempSolid;
+  int count;
   
   public board(){
     ballList = new ArrayList<billiardBall>();
     pocketList = new ArrayList<pocket>();
+    stripe = 7;
+    solid = 7;
+    tempStripe = 0;
+    tempSolid = 0;
+    count =0;
     billiardBall cueBall = new billiardBall(18, 25, 255, 250, 400);
     ballList.add(cueBall); //cueBall
     ballList.add(new billiardBall(18, 25, color(0), 860, 400)); //8ball
@@ -104,10 +112,38 @@ public class board{
       }
       for(int i = 2; i < ballList.size(); i++){
         if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
+          if(ballList.get(i).stripes){
+            tempStripe++;
+            stripe--;
+          }else{
+            tempSolid++;
+            solid--;
+          }
           ballList.remove(i);
           i--;
         }
     }
     }
+  }
+  
+  boolean stripeScore(){
+    if(!moving()){
+      if(tempStripe > 0){     
+        tempStripe =0;
+        return true;
+      }
+      tempStripe =0;
+    }
+    return false;
+  }
+  boolean solidScore(){
+    if(!moving()){
+      if(tempSolid > 0){     
+        tempSolid = 0;
+        return true;
+      }
+      tempSolid =0;
+    }
+    return false;
   }
 }
