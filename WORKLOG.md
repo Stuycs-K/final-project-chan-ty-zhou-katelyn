@@ -28,7 +28,15 @@ Started creating board borders and slightly changed border collision parameter
 
 ### 05/30/24
 
-improved cueStick visuals and magnitude and added directional line
+Improved cueStick visuals and magnitude and added directional line
+
+### 05/31/24
+
+Finished cue ball scratch mechanic
+
+### 06/01/24
+
+Finished team vs team mechanic
 
 ## Katelyn Zhou
 
@@ -59,3 +67,7 @@ Finished borders, changed some display, fixed collision so it accounts for new b
 ### 05/30/24
 
 Fixed some broken visuals and completed readme
+
+### 05/31/24
+
+Completed base code to start cue ball scratch mechanic and reupdated readme
