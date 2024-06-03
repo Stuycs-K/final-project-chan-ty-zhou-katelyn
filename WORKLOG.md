@@ -71,3 +71,7 @@ Fixed some broken visuals and completed readme
 ### 05/31/24
 
 Completed base code to start cue ball scratch mechanic and reupdated readme
+
+### 06/02/24
+
+Improved ball visuals by including number and circle, improved power bar visual, and fixed pocket collisions
