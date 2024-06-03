@@ -3,8 +3,9 @@ public class billiardBall{
   PVector velocity, acceleration, position;
   boolean stripes;
   color c;
+  int num;
   
-  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos){
+  public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos, int n){
     mass = m;
     radius = r;
     stripes = stripe;
@@ -12,15 +13,17 @@ public class billiardBall{
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
+    num = n;
   }
   
-    public billiardBall(float r, float m, color Color, float xPos, float yPos){
+    public billiardBall(float r, float m, color Color, float xPos, float yPos, int n){
     mass = m;
     radius = r;
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
+    num = n;
   }
   
   void move(){
@@ -43,7 +46,19 @@ public class billiardBall{
       fill(255);
       rect(this.position.x - radius + 1, this.position.y - 3.5, radius * 2 -1, 7);
     }
+    textSize(10);
+    textAlign(CENTER);
+    fill(255);
+    strokeWeight(0);
+    if(num!=0){
+      circle(this.position.x, this.position.y, radius);
+    }
+    fill(0);
+    if(num!=0){
+      text(""+num, position.x-1, position.y+3);
+    }
     noStroke();
+    textAlign(LEFT);
   }
   
   void applyForce(PVector force){
