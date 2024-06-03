@@ -78,6 +78,8 @@ void displayTeam(){
 void mouseClicked(){
  if(!boardOne.moving() && !boardOne.whiteIn && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
    stick.applyHit(boardOne.ballList.get(0));
+ }else if(mouseY < 80 && mouseY > 30 && mouseX < 1000 & mouseX > 800){
+   boardOne.whiteIn = true;
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
    powerCoord = mouseY;
    stick.adjustPower((mouseY-150)/5);
@@ -85,7 +87,6 @@ void mouseClicked(){
    stick.changeDir(boardOne.ballList.get(0).position);
  }else if(boardOne.whiteIn && mouseX > 178 && mouseX < 1122 && mouseY > 178 && mouseY < 1092){
    boardOne.whiteIn = false;
-   
  }
 }
 
