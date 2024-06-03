@@ -4,6 +4,7 @@ private boolean teamActive;
 String[] choiceTeam;
 int countdown;
 int turn;
+float powerCoord;
 
 void setup(){
   background(155); //832222 brown
@@ -14,12 +15,14 @@ void setup(){
   choiceTeam = new String[2];
   countdown = 0;
   turn = 1;
+  powerCoord = 200.0;
 }
 
 void draw(){
   background(155);
   boardOne.display();
   displayTeam();
+  rect(35,powerCoord,45,20);
   if(boardOne.moving()){
     countdown++;
   }
@@ -61,11 +64,13 @@ void displayTeam(){
   if(teamActive){
     textSize(30);
     fill(0);
-    text("Team One's turn! - " + choiceTeam[0], 30, 30);
+    //text("Team One's turn!" + choiceTeam[0], 30, 30);
+    text("Player 1's turn!", 30, 30);
   }else{
     textSize(30);
     fill(0);
-    text("Team Two's turn! - " + choiceTeam[1], 30, 30);
+    //text("Team Two's turn! - " + choiceTeam[1], 30, 30);
+    text("Player 2's turn!", 30, 30);
   }
   text("Turn " + turn, 30, 60);
 }
@@ -74,6 +79,7 @@ void mouseClicked(){
  if(!boardOne.moving() && !boardOne.whiteIn && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
    stick.applyHit(boardOne.ballList.get(0));
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
+   powerCoord = mouseY;
    stick.adjustPower((mouseY-150)/5);
  } else if(!boardOne.whiteIn){
    stick.changeDir(boardOne.ballList.get(0).position);
