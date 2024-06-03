@@ -126,6 +126,13 @@ public class board{
     }
     //text("temp stripes " + tempStripe, 620, 30);
     //text("temp solids " + tempSolid, 620, 40);
+    fill(255);
+    stroke(0);
+    strokeWeight(2);
+    rect(800, 30, 200, 50); //for cueBall "hack" purposes
+    fill(0);
+    textSize(30);
+    text("place cueBall", 820, 60);
   }
   
   boolean stripeScore(){
