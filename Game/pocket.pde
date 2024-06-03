@@ -8,11 +8,11 @@ public class pocket{
   }
   
   boolean detectGoal(float x, float y){
-    if(dist(x,y,xPos,yPos) <= radius){
-    return true;
-  }
-    return false;
-  }
+    if(dist(x,y,xPos,yPos) <= radius+5){
+      return true;
+    }
+      return false;
+    }
   
   void display(){
     noStroke();

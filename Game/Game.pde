@@ -7,7 +7,7 @@ int turn;
 float powerCoord;
 
 void setup(){
-  background(155); //832222 brown
+  background(155);
   size(1300, 800);
   stick = new cueStick(0, 0);
   boardOne = new board();
