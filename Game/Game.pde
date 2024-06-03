@@ -28,6 +28,11 @@ void draw(){
   }
   if(!boardOne.moving() && countdown > 0){ //this is only called AFTER a move is made
     countdown = 0;
+    if(boardOne.blackIn){
+      if(teamActive&&choiceTeam[0].equals("stripes")){
+        //wprkwoowjgfowj
+      }
+    }
     turn++;
     if(choiceTeam[0] == null){
       if((teamActive && boardOne.stripeScore()) || (!teamActive && boardOne.solidScore())){
@@ -64,13 +69,18 @@ void displayTeam(){
   if(teamActive){
     textSize(30);
     fill(0);
-    //text("Team One's turn!" + choiceTeam[0], 30, 30);
     text("Player 1's turn!", 30, 30);
   }else{
     textSize(30);
     fill(0);
-    //text("Team Two's turn! - " + choiceTeam[1], 30, 30);
     text("Player 2's turn!", 30, 30);
+  }
+  if(choiceTeam[0]!=null){
+    if(teamActive){
+      text(" - "+choiceTeam[0], 215, 30);
+    } else{
+      text(" - "+choiceTeam[1], 215, 30);
+    }
   }
   text("Turn " + turn, 30, 60);
 }

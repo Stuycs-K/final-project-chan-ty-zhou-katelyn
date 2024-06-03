@@ -2,6 +2,7 @@ public class board{
   ArrayList<billiardBall> ballList;
   ArrayList<pocket> pocketList;
   boolean whiteIn = false;
+  boolean blackIn = false;
   boolean movement;
   int stripe;
   int solid;
@@ -41,6 +42,9 @@ public class board{
     pocketList.add(new pocket(25, 150, 655));
     pocketList.add(new pocket(25, 650, 660));
     pocketList.add(new pocket(25, 1145, 655));
+    
+    whiteIn = false;
+    blackIn = false;
   }
   
   boolean moving(){
@@ -110,7 +114,7 @@ public class board{
         ballList.get(0).velocity.x = 0;
         ballList.get(0).velocity.y = 0;
       }
-      for(int i = 2; i < ballList.size(); i++){
+      for(int i = 1; i < ballList.size(); i++){
         if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
           if(ballList.get(i).stripes){
             tempStripe++;
@@ -120,6 +124,9 @@ public class board{
             solid--;
           }
           ballList.remove(i);
+          if(i==1){
+            blackIn = true;
+          }
           i--;
         }
     }
