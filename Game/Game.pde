@@ -29,8 +29,18 @@ void draw(){
   if(!boardOne.moving() && countdown > 0){ //this is only called AFTER a move is made
     countdown = 0;
     if(boardOne.blackIn){
-      if(teamActive&&choiceTeam[0].equals("stripes")){
-        //wprkwoowjgfowj
+      if(teamActive){
+        if((choiceTeam[0].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[0].equals("solids") && boardOne.solid > 0)){
+          //team 0 loses
+        }else if((choiceTeam[0].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[0].equals("solids") && boardOne.solid == 0)){
+          //team 0 wins
+        }
+      }else{
+        if((choiceTeam[1].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[1].equals("solids") && boardOne.solid > 0)){
+          //team 1 loses
+        }else if((choiceTeam[1].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[1].equals("solids") && boardOne.solid == 0)){
+          //team 1 wins
+        }
       }
     }
     turn++;
