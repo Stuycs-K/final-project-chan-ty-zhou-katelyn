@@ -38,6 +38,10 @@ Finished cue ball scratch mechanic
 
 Finished team vs team mechanic
 
+### 06/03/24
+
+Finished 8ball mechanics, losing/winning mechanics, bug fixed
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -75,3 +79,7 @@ Completed base code to start cue ball scratch mechanic and reupdated readme
 ### 06/02/24
 
 Improved ball visuals by including number and circle, improved power bar visual, and fixed pocket collisions
+
+### 06/03/24
+
+Started code for 8ball, started implementing spin, started code for win/loss
