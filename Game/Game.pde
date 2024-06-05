@@ -5,6 +5,7 @@ String[] choiceTeam;
 int countdown;
 int turn;
 float powerCoord;
+boolean oneWin, twoWin;
 
 void setup(){
   background(155);
@@ -16,6 +17,8 @@ void setup(){
   countdown = 0;
   turn = 1;
   powerCoord = 200.0;
+  oneWin = false;
+  twoWin = false;
 }
 
 void draw(){
@@ -28,50 +31,26 @@ void draw(){
   }
   if(!boardOne.moving() && countdown > 0){ //this is only called AFTER a move is made
     countdown = 0;
-    if(boardOne.blackIn){
-      if(teamActive){
-        if((choiceTeam[0].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[0].equals("solids") && boardOne.solid > 0)){
-          //team 0 loses
-        }else if((choiceTeam[0].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[0].equals("solids") && boardOne.solid == 0)){
-          //team 0 wins
-        }
-      }else{
-        if((choiceTeam[1].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[1].equals("solids") && boardOne.solid > 0)){
-          //team 1 loses
-        }else if((choiceTeam[1].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[1].equals("solids") && boardOne.solid == 0)){
-          //team 1 wins
-        }
-      }
-    }
+    checkWin();
     turn++;
-    if(choiceTeam[0] == null){
-      if((teamActive && boardOne.stripeScore()) || (!teamActive && boardOne.solidScore())){
-        choiceTeam[0] = "stripes";
-        choiceTeam[1] = "solids";
-      }else if((teamActive && boardOne.solidScore()) || (!teamActive && boardOne.stripeScore())){
-        choiceTeam[0] = "solids";
-        choiceTeam[1] = "stripes";
-      }
-      }
-      if(teamActive){
-        teamActive = false;
-        if((boardOne.stripeScore() && choiceTeam[0].equals("stripes")) || (boardOne.solidScore() && choiceTeam[0].equals("solids"))){
-          teamActive = true;
-        }
-      }else{
-        teamActive = true;
-        if((boardOne.stripeScore() && choiceTeam[1].equals("stripes")) || (boardOne.solidScore() && choiceTeam[1].equals("solids"))){
-          teamActive = false;
-        }
-      }
-      
-      boardOne.tempSolid = 0;
-      boardOne.tempStripe = 0;
-    }
-  
+    chooseTeam();
+    advanceTurn();
+    boardOne.tempSolid = 0;
+    boardOne.tempStripe = 0;
+  }
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
   if(!boardOne.moving() && !boardOne.whiteIn){
     stick.display();
+  }
+  if(!boardOne.moving() && boardOne.blackIn){
+    fill(0, 0, 255);
+    textAlign(CENTER);
+    textSize(150);
+    if(oneWin){
+      text("Player one wins!", width / 2, height / 2);
+    }else{
+    text("Player two wins!", width / 2, height / 2);
+    }
   }
 }
 
@@ -110,7 +89,46 @@ void mouseClicked(){
  }
 }
 
-boolean turn(){
-  if(teamActive){}
-  return true;
+void checkWin(){
+  if(boardOne.blackIn){
+      if(teamActive){
+        if((choiceTeam[0].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[0].equals("solids") && boardOne.solid > 0)){
+          twoWin = true;
+        }else if((choiceTeam[0].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[0].equals("solids") && boardOne.solid == 0)){
+          oneWin = true;
+        }
+      }else{
+        if((choiceTeam[1].equals("stripes") && boardOne.stripe > 0) || (choiceTeam[1].equals("solids") && boardOne.solid > 0)){
+          oneWin = true;
+        }else if((choiceTeam[1].equals("stripes") && boardOne.stripe == 0) || (choiceTeam[1].equals("solids") && boardOne.solid == 0)){
+          twoWin = true;
+        }
+      }
+    }
+}
+
+void chooseTeam(){
+if(choiceTeam[0] == null){
+      if((teamActive && boardOne.stripeScore()) || (!teamActive && boardOne.solidScore())){
+        choiceTeam[0] = "stripes";
+        choiceTeam[1] = "solids";
+      }else if((teamActive && boardOne.solidScore()) || (!teamActive && boardOne.stripeScore())){
+        choiceTeam[0] = "solids";
+        choiceTeam[1] = "stripes";
+      }
+      }
+}
+
+void advanceTurn(){
+  if(teamActive){
+        teamActive = false;
+        if((boardOne.stripeScore() && choiceTeam[0].equals("stripes")) || (boardOne.solidScore() && choiceTeam[0].equals("solids"))){
+          teamActive = true;
+        }
+      }else{
+        teamActive = true;
+        if((boardOne.stripeScore() && choiceTeam[1].equals("stripes")) || (boardOne.solidScore() && choiceTeam[1].equals("solids"))){
+          teamActive = false;
+        }
+      }
 }

@@ -18,30 +18,30 @@ public class board{
     tempStripe = 0;
     tempSolid = 0;
     count =0;
-    billiardBall cueBall = new billiardBall(18, 25, 255, 250, 400, 0);
+    billiardBall cueBall = new billiardBall(17, 25, 255, 250, 400, 0);
     ballList.add(cueBall); //cueBall
-    ballList.add(new billiardBall(18, 25, color(0), 860, 400, 8)); //8ball
-    ballList.add(new billiardBall(18, 25, true, #FFFF00, 800, 400, 1)); //row1 ;; yellow striped
-    ballList.add(new billiardBall(18, 25, true, #FFA500, 830, 420, 2)); //row2 ;; orange striped
-    ballList.add(new billiardBall(18, 25, false, #FFA500, 830, 380, 9)); //orange solid
-    ballList.add(new billiardBall(18, 25, false, #FF0000, 860, 440, 10)); //row3 ;; red solid 
-    ballList.add(new billiardBall(18, 25, false, #8B0000, 860, 360, 11)); //dark red solid
-    ballList.add(new billiardBall(18, 25, false, #0000FF, 890, 340, 12)); //row4 ;; blue solid 
-    ballList.add(new billiardBall(18, 25, false, #800080, 890, 380, 13)); //purple solid
-    ballList.add(new billiardBall(18, 25, true, #FF0000, 890, 420, 3)); //red striped
-    ballList.add(new billiardBall(18, 25, false, #FFFF00, 890, 460, 14)); //yellow solid
-    ballList.add(new billiardBall(18, 25, true, #0000FF, 920, 320, 4)); //row5 ;; blue striped
-    ballList.add(new billiardBall(18, 25, true, #00FF00, 920, 360, 5)); //green striped
-    ballList.add(new billiardBall(18, 25, false, #00FF00, 920, 400, 15)); //green solid
-    ballList.add(new billiardBall(18, 25, true, #8B0000, 920, 440, 6)); //dark red striped
-    ballList.add(new billiardBall(18, 25, true, #800080, 920, 480, 7)); //purple striped
+    ballList.add(new billiardBall(17, 25, color(0), 860, 400, 8)); //8ball
+    ballList.add(new billiardBall(17, 25, true, #FFFF00, 800, 400, 1)); //row1 ;; yellow striped
+    ballList.add(new billiardBall(17, 25, true, #FFA500, 830, 420, 2)); //row2 ;; orange striped
+    ballList.add(new billiardBall(17, 25, false, #FFA500, 830, 380, 9)); //orange solid
+    ballList.add(new billiardBall(17, 25, false, #FF0000, 860, 440, 10)); //row3 ;; red solid 
+    ballList.add(new billiardBall(17, 25, false, #8B0000, 860, 360, 11)); //dark red solid
+    ballList.add(new billiardBall(17, 25, false, #0000FF, 890, 340, 12)); //row4 ;; blue solid 
+    ballList.add(new billiardBall(17, 25, false, #800080, 890, 380, 13)); //purple solid
+    ballList.add(new billiardBall(17, 25, true, #FF0000, 890, 420, 3)); //red striped
+    ballList.add(new billiardBall(17, 25, false, #FFFF00, 890, 460, 14)); //yellow solid
+    ballList.add(new billiardBall(17, 25, true, #0000FF, 920, 320, 4)); //row5 ;; blue striped
+    ballList.add(new billiardBall(17, 25, true, #00FF00, 920, 360, 5)); //green striped
+    ballList.add(new billiardBall(17, 25, false, #00FF00, 920, 400, 15)); //green solid
+    ballList.add(new billiardBall(17, 25, true, #8B0000, 920, 440, 6)); //dark red striped
+    ballList.add(new billiardBall(17, 25, true, #800080, 920, 480, 7)); //purple striped
 
-    pocketList.add(new pocket(25, 150, 145));
-    pocketList.add(new pocket(25, 650, 140));
-    pocketList.add(new pocket(25, 1145, 145));
-    pocketList.add(new pocket(25, 150, 655));
-    pocketList.add(new pocket(25, 650, 660));
-    pocketList.add(new pocket(25, 1145, 655));
+    pocketList.add(new pocket(20, 150, 145));
+    pocketList.add(new pocket(20, 650, 140));
+    pocketList.add(new pocket(20, 1145, 145));
+    pocketList.add(new pocket(20, 150, 655));
+    pocketList.add(new pocket(20, 650, 660));
+    pocketList.add(new pocket(20, 1145, 655));
     
     whiteIn = false;
     blackIn = false;
@@ -113,6 +113,7 @@ public class board{
         whiteIn = true;
         ballList.get(0).velocity.x = 0;
         ballList.get(0).velocity.y = 0;
+        ballList.get(0).position = new PVector(0, 0);
       }
       for(int i = 1; i < ballList.size(); i++){
         if(pocket.detectGoal(ballList.get(i).position.x,ballList.get(i).position.y)){
