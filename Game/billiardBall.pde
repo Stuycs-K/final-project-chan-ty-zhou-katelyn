@@ -26,13 +26,14 @@ public class billiardBall{
     velocity = new PVector(0, 0);
     num = n;
     sideSpin = new PVector(0,0);
+    sideSpin = PVector.div(velocity,300);
   }
   
   void move(){
     velocity.add(velocity.x / -150, velocity.y / -150);
     velocity.add(acceleration);
     if(num==0){
-      sideSpin = PVector.div(velocity,300);
+      //sideSpin = PVector.div(velocity,300);
       sideSpin.rotate(HALF_PI);
       velocity.add(sideSpin);
       if(sideSpin.mag() < 50){
@@ -88,18 +89,30 @@ public class billiardBall{
     if(position.x >= 1132 || (position.x >= 1122 && (position.y >= 185 && position.y <= 615))){
       position.x -= 2;
       velocity.x *= -1;
+      //if(sideSpin.mag()>0){
+        sideSpin.mult(500);
+      //}
     }
     else if(position.x <= 168 ||(position.x <= 178 && (position.y >= 185 && position.y <= 615))){
       position.x += 2;
       velocity.x *= -1;
+      //if(sideSpin.mag()>0){
+        sideSpin.mult(500);
+      //}
     }
     if(((position.y >= 632)) || (position.y >= 622 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110)))){
       position.y -= 2;
       velocity.y *= -1;
+      //if(sideSpin.mag()>0){
+        sideSpin.mult(500);
+      //}
     }
     else if(((position.y <= 168)) || (position.y <= 178 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110)))){
       position.y += 2;
       velocity.y *= -1;
+      //if(sideSpin.mag()>0){
+        sideSpin.mult(500);
+      //}
     }
   }
 }
