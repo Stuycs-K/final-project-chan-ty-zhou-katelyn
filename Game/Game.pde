@@ -42,6 +42,16 @@ void draw(){
   if(!boardOne.moving() && !boardOne.whiteIn){
     stick.display();
   }
+  if(!boardOne.moving() && boardOne.blackIn){
+    fill(0, 0, 255);
+    textAlign(CENTER);
+    textSize(150);
+    if(oneWin){
+      text("Player one wins!", width / 2, height / 2);
+    }else{
+    text("Player two wins!", width / 2, height / 2);
+    }
+  }
 }
 
 void displayTeam(){
