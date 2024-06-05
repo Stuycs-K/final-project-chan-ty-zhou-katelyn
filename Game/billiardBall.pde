@@ -1,6 +1,6 @@
 public class billiardBall{
   float radius, mass;
-  PVector velocity, acceleration, position;
+  PVector velocity, acceleration, position, sideSpin;
   boolean stripes;
   color c;
   int num;
@@ -14,6 +14,7 @@ public class billiardBall{
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
     num = n;
+    sideSpin = new PVector(0,0);
   }
   
     public billiardBall(float r, float m, color Color, float xPos, float yPos, int n){
@@ -22,13 +23,20 @@ public class billiardBall{
     c = Color;
     position = new PVector(xPos, yPos);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(0, 0);
+    velocity = new PVector(1, 0);
     num = n;
+    sideSpin = new PVector(0,0);
   }
   
   void move(){
     velocity.add(velocity.x / -150, velocity.y / -150);
     velocity.add(acceleration);
+    if(num==0){
+      sideSpin = PVector.div(velocity,3);
+      sideSpin.rotate(HALF_PI);
+      velocity.add(sideSpin);
+      sideSpin.div(50);
+    }
     position.add(velocity);
     if(velocity.mag() < 0.2){
       velocity = new PVector(0, 0);
