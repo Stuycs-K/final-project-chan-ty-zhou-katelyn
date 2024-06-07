@@ -95,7 +95,10 @@ public class board{
     
     fill(255);
     strokeWeight(1);
-    circle(1245, height / 2, 85);
+    circle(1245, 400, 85);
+    fill(255, 0, 0);
+    strokeWeight(0);
+    circle(1245 + spinAngle.x, 400 + spinAngle.y, 10);
     
     for(pocket pocket : pocketList){
       pocket.display();
@@ -169,7 +172,10 @@ public class board{
     return false;
   }
   
-  void adjustSpin(){
-    spinAngle = new PVector(mouseX - 1245, mouseY - height / 2);
+  void adjustSpin(float x, float y){
+    if(!moving()){
+      spinAngle = new PVector(x - 1245, y - 400);
+      ballList.get(0).spin = PVector.div(spinAngle, 120).rotate(HALF_PI);
+    }
   }
 }

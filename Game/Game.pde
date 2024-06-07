@@ -37,21 +37,13 @@ void draw(){
     advanceTurn();
     boardOne.tempSolid = 0;
     boardOne.tempStripe = 0;
+    boardOne.adjustSpin(1245, 400);
   }
   stick.changePos(boardOne.ballList.get(0).position.x, boardOne.ballList.get(0).position.y);
   if(!boardOne.moving() && !boardOne.whiteIn){
     stick.display();
   }
-  if(!boardOne.moving() && boardOne.blackIn){
-    fill(0, 0, 255);
-    textAlign(CENTER);
-    textSize(150);
-    if(oneWin){
-      text("Player one wins!", width / 2, height / 2);
-    }else{
-    text("Player two wins!", width / 2, height / 2);
-    }
-  }
+  displayWin();
 }
 
 void displayTeam(){
@@ -75,16 +67,18 @@ void displayTeam(){
 }
 
 void mouseClicked(){
- if(!boardOne.moving() && !boardOne.whiteIn && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){
+ if(!boardOne.moving() && !boardOne.whiteIn && mouseY < 785 && mouseY > 725 && mouseX < 785 & mouseX > 525){ // shoot button
    stick.applyHit(boardOne.ballList.get(0));
- }else if(mouseY < 80 && mouseY > 30 && mouseX < 1000 & mouseX > 800){
+ }else if(mouseY < 80 && mouseY > 30 && mouseX < 1000 & mouseX > 800){ // place cueball button
    boardOne.whiteIn = true;
- } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){
+ } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){ // change power button
    powerCoord = mouseY;
    stick.adjustPower((mouseY-150)/5);
- } else if(!boardOne.whiteIn){
+ } else if(dist(1245, height / 2, mouseX, mouseY) < 85/2){ //set spin
+   boardOne.adjustSpin(mouseX, mouseY);
+ }else if(!boardOne.whiteIn){ // change cueStick direction
    stick.changeDir(boardOne.ballList.get(0).position);
- }else if(boardOne.whiteIn && mouseX > 178 && mouseX < 1122 && mouseY > 178 && mouseY < 1092){
+ }else if(boardOne.whiteIn && mouseX > 178 && mouseX < 1122 && mouseY > 178 && mouseY < 1092){ // place cueball after shot in
    boardOne.whiteIn = false;
  }
 }
@@ -131,4 +125,17 @@ void advanceTurn(){
           teamActive = false;
         }
       }
+}
+
+void displayWin(){
+  if(!boardOne.moving() && boardOne.blackIn){
+    fill(0, 0, 255);
+    textAlign(CENTER);
+    textSize(150);
+    if(oneWin){
+      text("Player one wins!", width / 2, height / 2);
+    }else{
+    text("Player two wins!", width / 2, height / 2);
+    }
+  }
 }
