@@ -9,6 +9,7 @@ public class board{
   int tempStripe;
   int tempSolid;
   int count;
+  PVector spinAngle;
   
   public board(){
     ballList = new ArrayList<billiardBall>();
@@ -18,6 +19,7 @@ public class board{
     tempStripe = 0;
     tempSolid = 0;
     count =0;
+    spinAngle = new PVector(0, 0);
     billiardBall cueBall = new billiardBall(17, 25, 255, 250, 400, 0);
     ballList.add(cueBall); //cueBall
     ballList.add(new billiardBall(17, 25, color(0), 860, 400, 8)); //8ball
@@ -66,6 +68,7 @@ public class board{
     strokeWeight(0);
     rect(150, 150, 1000, 500);
     strokeWeight(2);
+    
     rect(35, 150, 45, 500);
     fill(255);
     rect(525, 725, 260, 59);
@@ -81,6 +84,7 @@ public class board{
     text("low", 40, 140);
     text("high", 35, 675);
     text("shoot!", 620, 765);
+    
     fill(#076156);
     quad(180, 150, 625, 150, 615, 160, 190, 160);
     quad(180, 650, 625, 650, 615, 640, 190, 640);
@@ -88,6 +92,11 @@ public class board{
     quad(675, 650, 1120, 650, 1110, 640, 685, 640);
     quad(150, 175, 150, 625, 160, 615, 160, 185);
     quad(1150, 175, 1150, 625, 1140, 615, 1140, 185);
+    
+    fill(255);
+    strokeWeight(1);
+    circle(1245, height / 2, 85);
+    
     for(pocket pocket : pocketList){
       pocket.display();
     }
@@ -158,5 +167,9 @@ public class board{
       }
     }
     return false;
+  }
+  
+  void adjustSpin(){
+    spinAngle = new PVector(mouseX - 1245, mouseY - height / 2);
   }
 }
