@@ -1,5 +1,7 @@
 public class board{
   ArrayList<billiardBall> ballList;
+  ArrayList<billiardBall> stripeIn;
+  ArrayList<billiardBall> solidIn;
   ArrayList<pocket> pocketList;
   boolean whiteIn = false;
   boolean blackIn = false;
@@ -14,6 +16,8 @@ public class board{
   public board(){
     ballList = new ArrayList<billiardBall>();
     pocketList = new ArrayList<pocket>();
+    stripeIn = new ArrayList<billiardBall>();
+    solidIn = new ArrayList<billiardBall>();
     stripe = 7;
     solid = 7;
     tempStripe = 0;
@@ -132,9 +136,11 @@ public class board{
           if(ballList.get(i).stripes){
             tempStripe++;
             stripe--;
+            stripeIn.add(ballList.get(i));
           }else{
             tempSolid++;
             solid--;
+            solidIn.add(ballList.get(i));
           }
           ballList.remove(i);
           if(i==1){
@@ -144,8 +150,6 @@ public class board{
         }
     }
     }
-    //text("temp stripes " + tempStripe, 620, 30);
-    //text("temp solids " + tempSolid, 620, 40);
     fill(255);
     stroke(0);
     strokeWeight(2);

@@ -8,7 +8,6 @@ float powerCoord;
 boolean oneWin, twoWin;
 
 void setup(){
-  background(155);
   size(1300, 800);
   stick = new cueStick(0, 0);
   boardOne = new board();
@@ -22,7 +21,7 @@ void setup(){
 }
 
 void draw(){
-  background(155);
+  background(175);
   boardOne.display();
   displayTeam();
   rect(35,powerCoord,45,20);
@@ -81,6 +80,12 @@ void mouseClicked(){
  }else if(boardOne.whiteIn && mouseX > 178 && mouseX < 1122 && mouseY > 178 && mouseY < 1092){ // place cueball after shot in
    boardOne.whiteIn = false;
  }
+}
+
+void keyPressed(){
+  if(key==' '){
+    stick.applyHit(boardOne.ballList.get(0));
+  }
 }
 
 void checkWin(){
