@@ -42,6 +42,10 @@ Finished team vs team mechanic
 
 Finished 8ball mechanics, losing/winning mechanics, bug fixed
 
+### 06/05/24
+
+Attempted and continued working on cueSpin mechanic
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -83,3 +87,7 @@ Improved ball visuals by including number and circle, improved power bar visual,
 ### 06/03/24
 
 Started code for 8ball, started implementing spin, started code for win/loss
+
+### 06/05/24
+
+Started cueSpin mechanic and display for scored balls, made it so pressing space bar shoots the cue ball
