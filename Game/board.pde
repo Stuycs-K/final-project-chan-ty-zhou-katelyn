@@ -104,6 +104,11 @@ public class board{
     strokeWeight(0);
     circle(1245 + spinAngle.x, 400 + spinAngle.y, 10);
     
+    textAlign(CENTER);
+    fill(0);
+    text("spin",1245,350);
+    text("Press enter to reset!", width/2, 50);
+    
     for(pocket pocket : pocketList){
       pocket.display();
     }

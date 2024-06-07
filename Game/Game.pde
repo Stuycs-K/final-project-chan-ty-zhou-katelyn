@@ -86,6 +86,9 @@ void keyPressed(){
   if(key==' '){
     stick.applyHit(boardOne.ballList.get(0));
   }
+  else if(key == ENTER){
+    setup();
+  }
 }
 
 void checkWin(){
