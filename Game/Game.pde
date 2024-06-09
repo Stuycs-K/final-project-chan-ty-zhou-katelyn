@@ -81,7 +81,8 @@ void mouseClicked(){
         choiceTeam[0] = "solids";
         choiceTeam[1] = "stripes";
       }
-      }
+    }
+    checkWin();
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){ // change power button
    powerCoord = mouseY;
    stick.adjustPower((mouseY-150)/5);
@@ -95,7 +96,7 @@ void mouseClicked(){
 }
 
 void keyPressed(){
-  if(key==' '){
+  if(key==' '&&!boardOne.moving()){
     stick.applyHit(boardOne.ballList.get(0));
   }
   else if(key == ENTER){
