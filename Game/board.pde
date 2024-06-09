@@ -113,7 +113,6 @@ public class board{
       pocket.display();
     }
     for(int i = 0; i < ballList.size(); i++){
-      ballList.get(i).move();
       if(!(i==0 && whiteIn)){
         ballList.get(i).display();
       }
@@ -123,12 +122,23 @@ public class board{
         ballList.get(0).display();
       }
       ballList.get(i).wallCollide();
+      int inRange = 0;
+      PVector tempVel = ballList.get(i).velocity;
+      if(tempVel.mag() > 0){
+        for(billiardBall other : ballList){
+        if(ballList.get(i) != other && dist(ballList.get(i).position.x, ballList.get(i).position.y, other.position.x, other.position.y) < 36){
+          inRange++;
+        }
+      }
       for(billiardBall other : ballList){
         if(ballList.get(i) != other && dist(ballList.get(i).position.x, ballList.get(i).position.y, other.position.x, other.position.y) < 36){
-          ballList.get(i).ballCollide(other);
+          ballList.get(i).ballCollide(other, inRange, tempVel);
         }
       }
     }
+    }
+    for(int i = 0; i < ballList.size(); i++){
+      ballList.get(i).move();}
     for(pocket pocket : pocketList){
       if(pocket.detectGoal(ballList.get(0).position.x,ballList.get(0).position.y)){
         whiteIn = true;
