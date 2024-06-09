@@ -46,6 +46,14 @@ Finished 8ball mechanics, losing/winning mechanics, bug fixed
 
 Attempted and continued working on cueSpin mechanic
 
+### 06/07/24
+
+Updated readme to include keyboard shortcuts and attempted to improve physics
+
+### 06/08/24
+
+Finished readjusting physics and finished spin
+
 ## Katelyn Zhou
 
 ### 05/22/24
@@ -91,3 +99,11 @@ Started code for 8ball, started implementing spin, started code for win/loss
 ### 06/05/24
 
 Started cueSpin mechanic and display for scored balls, made it so pressing space bar shoots the cue ball
+
+### 06/07/24
+
+Updated text visuals and created reset board function
+
+### 06/08/24
+
+Implemented cheat mode (to delete balls and make testing easier), made small bug fixes, updated readme

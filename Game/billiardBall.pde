@@ -4,6 +4,7 @@ public class billiardBall{
   boolean stripes;
   color c;
   int num;
+  int count;
   
   public billiardBall(float r, float m, boolean stripe, color Color, float xPos, float yPos, int n){
     mass = m;
@@ -26,18 +27,19 @@ public class billiardBall{
     velocity = new PVector(0, 0);
     num = n;
     spin = new PVector(0,0);
+    count = 0;
   }
   
   void move(){
     velocity.add(velocity.x / -150, velocity.y / -150);
     velocity.add(acceleration);
-    if(num==0 && velocity.mag() > 0){
-      velocity.add(spin);
-      if(spin.mag() < 0.5){
+    if(num == 0 && velocity.mag() > 1){
+      velocity.add(PVector.div(spin, 50 * velocity.mag() * sqrt((count + 1))));
+    }
+    spin.add(spin.x / -120, spin.y / -120);
+    if(spin.mag() < 0.1){
         spin = new PVector(0,0);
       }
-    }
-    spin.div(100);
     position.add(velocity);
     if(velocity.mag() < 0.2){
       velocity = new PVector(0, 0);
@@ -87,22 +89,30 @@ public class billiardBall{
     if(position.x >= 1132 || (position.x >= 1122 && (position.y >= 185 && position.y <= 615))){
       position.x -= 2;
       velocity.x *= -1;
-      spin.mult(200);
+      if(spin.mag() < 15){
+  spin.mult(-10);
+}
     }
     else if(position.x <= 168 ||(position.x <= 178 && (position.y >= 185 && position.y <= 615))){
       position.x += 2;
       velocity.x *= -1;
-      spin.mult(200);
+      if(spin.mag() < 15){
+  spin.mult(-10);
+}
     }
     if(((position.y >= 632)) || (position.y >= 622 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110)))){
       position.y -= 2;
       velocity.y *= -1;
-      spin.mult(200);
+      if(spin.mag() < 15){
+  spin.mult(-10);
+}
     }
     else if(((position.y <= 168)) || (position.y <= 178 && ((position.x >= 190 && position.x <= 615)||(position.x >= 685 && position.x <= 1110)))){
       position.y += 2;
       velocity.y *= -1;
-      spin.mult(200);
+      if(spin.mag() < 15){
+  spin.mult(-10);
+}
     }
   }
 }
