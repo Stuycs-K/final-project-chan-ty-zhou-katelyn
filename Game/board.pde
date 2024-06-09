@@ -6,6 +6,7 @@ public class board{
   boolean whiteIn = false;
   boolean blackIn = false;
   boolean movement;
+  boolean cheatMode = false;
   int stripe;
   int solid;
   int tempStripe;
@@ -153,9 +154,11 @@ public class board{
             stripe--;
             stripeIn.add(ballList.get(i));
           }else{
+          if(ballList.get(i).num!=1){
             tempSolid++;
             solid--;
             solidIn.add(ballList.get(i));
+          }
           }
           ballList.remove(i);
           if(i==1){
@@ -189,6 +192,29 @@ public class board{
       }
     }
     return false;
+  }
+  
+  void killBall(float x, float y){
+    if(cheatMode){
+      for(int i = 1; i < ballList.size(); i++){
+        if(dist(x,y,ballList.get(i).position.x,ballList.get(i).position.y) < 17){
+          if(ballList.get(i).stripes){
+            tempStripe++;
+            stripe--;
+            stripeIn.add(ballList.get(i));
+          }else{
+            tempSolid++;
+            solid--;
+            solidIn.add(ballList.get(i));
+          }
+          ballList.remove(i);
+          if(i==1){
+            blackIn = true;
+          }
+          i--;
+        }
+    }
+    }
   }
   
   void adjustSpin(float x, float y){
