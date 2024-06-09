@@ -74,11 +74,11 @@ public class billiardBall{
     acceleration.add(PVector.div(force, this.mass));
   }
   
-  void ballCollide(billiardBall other){
+  void ballCollide(billiardBall other, int div, PVector vel){
     PVector force = PVector.sub(other.position, this.position);
     force.normalize();
     force.rotate((float)(Math.random() * (PI / 18) - (PI / 36)));
-    force.mult(velocity.mag() * mass * sq(cos(PVector.angleBetween(force, this.velocity))));
+    force.mult(vel.mag() * mass / 1.1 * sq(cos(PVector.angleBetween(force, vel))) / div);
     other.applyForce(force);
     this.applyForce(PVector.mult(force, -1));
   }
