@@ -8,7 +8,7 @@ public class pocket{
   }
   
   boolean detectGoal(float x, float y){
-    if(dist(x,y,xPos,yPos) <= radius+12){
+    if(dist(x,y,xPos,yPos) <= radius+15){
       return true;
     }
       return false;

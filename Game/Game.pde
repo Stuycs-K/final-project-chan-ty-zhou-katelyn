@@ -21,6 +21,7 @@ void setup(){
 }
 
 void draw(){
+  System.out.println(teamActive + " " + boardOne.stripe + " " + boardOne.solid);
   background(175);
   boardOne.display();
   displayTeam();
@@ -70,6 +71,18 @@ void mouseClicked(){
    stick.applyHit(boardOne.ballList.get(0));
  }else if(mouseY < 80 && mouseY > 30 && mouseX < 1000 & mouseX > 800){ // place cueball button
    boardOne.whiteIn = true;
+ } else if(boardOne.cheatMode){
+   boardOne.killBall(mouseX, mouseY);
+   if(choiceTeam[0] == null){
+     if((teamActive && boardOne.stripeIn.size()==1) || (!teamActive && boardOne.solidIn.size()==1)){
+       choiceTeam[0] = "stripes";
+       choiceTeam[1] = "solids";
+      }else if((teamActive && boardOne.solidIn.size()==1) || (!teamActive && boardOne.stripeIn.size()==1)){
+        choiceTeam[0] = "solids";
+        choiceTeam[1] = "stripes";
+      }
+    }
+    checkWin();
  } else if(mouseY < 650 && mouseY > 150 && mouseX < 80 & mouseX > 35){ // change power button
    powerCoord = mouseY;
    stick.adjustPower((mouseY-150)/5);
@@ -83,11 +96,14 @@ void mouseClicked(){
 }
 
 void keyPressed(){
-  if(key==' '){
+  if(key==' '&&!boardOne.moving()){
     stick.applyHit(boardOne.ballList.get(0));
   }
   else if(key == ENTER){
     setup();
+  }
+  else if(key == 'q'){
+    boardOne.cheatMode = !boardOne.cheatMode;
   }
 }
 
