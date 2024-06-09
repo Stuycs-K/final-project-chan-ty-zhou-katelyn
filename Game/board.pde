@@ -110,6 +110,7 @@ public class board{
     text("spin",1245,350);
     text("Press enter to reset!", width/2, 50);
     
+    
     for(pocket pocket : pocketList){
       pocket.display();
     }
@@ -175,6 +176,9 @@ public class board{
     fill(0);
     textSize(30);
     text("place cueBall", 820, 60);
+    if(cheatMode){
+      text("cheatMode: On", 1100, 60);
+    }
   }
   
   boolean stripeScore(){
@@ -220,7 +224,9 @@ public class board{
   void adjustSpin(float x, float y){
     if(!moving()){
       spinAngle = new PVector(x - 1245, y - 400);
-      ballList.get(0).spin = PVector.div(spinAngle, 120).rotate(HALF_PI);
+      ballList.get(0).spin = PVector.fromAngle(spinAngle.heading()).mult(spinAngle.mag());
+    }else{
+      ballList.get(0).spin = PVector.fromAngle(ballList.get(0).velocity.heading()).rotate(spinAngle.heading() + HALF_PI).mult(ballList.get(0).spin.mag());
     }
   }
 }

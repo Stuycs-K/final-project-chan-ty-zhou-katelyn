@@ -21,13 +21,15 @@ void setup(){
 }
 
 void draw(){
-  System.out.println(teamActive + " " + boardOne.stripe + " " + boardOne.solid);
+  System.out.println(boardOne.ballList.get(0).spin.x + " " + boardOne.ballList.get(0).spin.y + " " + countdown);
   background(175);
   boardOne.display();
   displayTeam();
   rect(35,powerCoord,45,20);
   if(boardOne.moving()){
     countdown++;
+    boardOne.adjustSpin(0, 0);
+    boardOne.ballList.get(0).count = countdown;
   }
   if(!boardOne.moving() && countdown > 0){ //this is only called AFTER a move is made
     countdown = 0;
